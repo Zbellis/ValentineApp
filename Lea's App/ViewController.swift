@@ -34,6 +34,35 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         return 1
     }
     
+    func pickerView(_ pickerView: UIPickerView, widthForComponent component: Int) -> CGFloat {
+        return 250.0
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+        var label: UILabel
+        if let v = view as? UILabel{
+                    label = v
+                }
+                else{
+                    label = UILabel()
+                }
+                
+                label.textColor = UIColor.white
+                label.textAlignment = .center
+                label.font = UIFont(name: "Bell MT", size: 32)
+                label.lineBreakMode = .byWordWrapping;
+                label.numberOfLines = 0;
+                label.text = loveLetters[row]
+                label.sizeToFit()
+                label.text = loveLetters[row]
+                
+                return label
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
+        120.0
+    }
+    
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         loveLetters.count
     }
